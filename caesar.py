@@ -46,12 +46,12 @@ if __name__ == '__main__':
     else:
         with open('/usr/share/dict/words') as f:
             words = [word.upper().strip() for word in f.readlines()]
-        guess = Guess(0, 0)
+        guess = Guess(key=0, score=0)
         for key in range(len(ALPHABET)):
             new_score = score(indata, key, words)
             print(f'Score for {key}: \t{new_score:.2f}')
             if new_score > guess.score:
-                guess = Guess(key, new_score)
+                guess = Guess(key=key, score=new_score)
 
         print(f'My guess is that the key was: {guess.key}!')
         print(decrypt(indata, guess.key))
