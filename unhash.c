@@ -10,12 +10,14 @@ char pnr[] = "somesalt000000-0000";
 const int salt_len = 8;
 int main(int argc, char *argv[]) {
     long c = 0;
+    int digit0 = atoi(argv[1]);
+    int digit1 = atoi(argv[2]);
     unsigned char *data;
-    hexs2bin(argv[1], &data);
+    hexs2bin(argv[3], &data);
 
     // Generate all pnrs
-    for (int d0 = 0; d0 < 10; d0++) { // First digit of pnr
-        for (int d1 = 0; d1 < 10; d1++) { // Second digit of pnr
+    for (int d0 = digit0; d0 < digit0 + 1; d0++) { // First digit of pnr
+        for (int d1 = digit1; d1 < digit1 + 1; d1++) { // Second digit of pnr
             for (int d2 = 0; d2 < 2; d2++) { // ...
                 for (int d3 = 0; d3 < 10; d3++) {
                     for (int d4 = 0; d4 < 10; d4++) {
